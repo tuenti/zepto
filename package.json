@@ -9,7 +9,7 @@
   }
   , "repository": {
       "type": "git"
-    , "url": "https://github.com/madrobby/zepto.git"
+    , "url": "https://github.com/tuenti/zepto.git"
   }
   , "licenses": [
     {
