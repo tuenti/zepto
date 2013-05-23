@@ -36,15 +36,20 @@ target.dist = ->
   target.minify()
   target.compress()
 
+# modified to add a build directory accoring to tuenti's convention
 target.build = ->
   cd __dirname
   mkdir '-p', 'dist'
+  rm('-rf', 'build')
+  mkdir '-p','build'
   modules = (env['MODULES'] || 'fx_methods data polyfill zepto detect event ajax form fx').split(' ')
   module_files = ( "src/#{module}.js" for module in modules )
   intro = "/* Zepto #{describe_version()} - #{modules.join(' ')} - zeptojs.com/license */\n"
   dist = intro + cat(module_files).replace(/^\/[\/*].*$/mg, '').replace(/\n{3,}/g, "\n\n")
   dist.to(zepto_js)
   report_size(zepto_js)
+  echo 'Coping to build directory'
+  cp('-R',zepto_js,'build')
 
 target.minify = ->
   target.build() unless test('-e', zepto_js)
