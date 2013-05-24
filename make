@@ -42,7 +42,7 @@ target.build = ->
   mkdir '-p', 'dist'
   rm('-rf', 'build')
   mkdir '-p','build'
-  modules = (env['MODULES'] || 'fx_methods data polyfill zepto detect event ajax form fx').split(' ')
+  modules = (env['MODULES'] || 'ie fx_methods data polyfill zepto detect event ajax form fx').split(' ')
   module_files = ( "src/#{module}.js" for module in modules )
   intro = "/* Zepto #{describe_version()} - #{modules.join(' ')} - zeptojs.com/license */\n"
   dist = intro + cat(module_files).replace(/^\/[\/*].*$/mg, '').replace(/\n{3,}/g, "\n\n")
