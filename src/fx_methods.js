@@ -30,6 +30,11 @@
     return anim(this, speed, 1, '1,1', callback)
   }
 
+ //stubbing it for jplayer to work
+  $.fn.stop = function() {
+
+              }
+
   $.fn.hide = function(speed, callback) {
     if (speed === undefined) return origHide.call(this)
     else return hide(this, speed, '0,0', callback)
