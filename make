@@ -42,6 +42,7 @@ target.build = ->
   mkdir '-p', 'dist'
   rm('-rf', 'build')
   mkdir '-p','build'
+  chmod(777, 'build');
   modules = (env['MODULES'] || 'ie polyfill zepto detect event ajax form fx fx_methods data').split(' ')
   module_files = ( "src/#{module}.js" for module in modules )
   intro = "/* Zepto #{describe_version()} - #{modules.join(' ')} - zeptojs.com/license */\n"
@@ -50,6 +51,7 @@ target.build = ->
   report_size(zepto_js)
   echo 'Coping to build directory'
   cp('-R',zepto_js,'build')
+  chmod(777, 'build/zepto.js');
 
 target.minify = ->
   target.build() unless test('-e', zepto_js)
