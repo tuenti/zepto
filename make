@@ -43,7 +43,7 @@ target.build = ->
   rm('-rf', 'build')
   mkdir '-p','build'
   chmod(777, 'build');
-  modules = (env['MODULES'] || 'ie ios3 zepto detect event ajax form fx fx_methods data').split(' ')
+  modules = (env['MODULES'] || 'ie ios3 zepto detect event ajax form fx fx_methods data touch').split(' ')
   module_files = ( "src/#{module}.js" for module in modules )
   intro = "/* Zepto #{describe_version()} - #{modules.join(' ')} - zeptojs.com/license */\n"
   dist = (intro + cat(module_files).replace(/^\/[\/*].*$/mg, '')).replace(/\n{3,}/g, "\n\n")
